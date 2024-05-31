@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "module": "commonjs",
+        "target": "ESNext",
+        "esModuleInterop": true,
+        "allowJs": true
+    }
+}
