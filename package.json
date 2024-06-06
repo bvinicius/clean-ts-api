@@ -6,8 +6,8 @@
     "scripts": {
         "lint": "eslint --ext .ts .",
         "lint:staged": "lint-staged",
-        "test": "jest",
-        "test:staged": "jest",
+        "test": "jest --passWithNoTests",
+        "test:staged": "jest --passWithNoTests",
         "prepare": "husky"
     },
     "keywords": [],
