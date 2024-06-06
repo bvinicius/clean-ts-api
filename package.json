@@ -4,8 +4,11 @@
     "description": "",
     "main": "index.js",
     "scripts": {
+        "lint": "eslint --ext .ts .",
+        "lint:staged": "lint-staged",
         "test": "jest",
-        "test:staged": "jest"
+        "test:staged": "jest",
+        "prepare": "husky"
     },
     "keywords": [],
     "author": "",
