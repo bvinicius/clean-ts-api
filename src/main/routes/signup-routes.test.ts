@@ -1,10 +1,11 @@
 import request from 'supertest';
 import app from '../config/app';
+import env from '../config/env';
 import { MongoHelper } from '../../infra/db/mongodb/helpers/mongo-helper';
 
 describe('SignUp Routes', () => {
     beforeAll(async () => {
-        await MongoHelper.connect();
+        await MongoHelper.connect(env.mongoUrl);
     });
 
     beforeEach(async () => {
