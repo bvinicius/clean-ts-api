@@ -14,6 +14,7 @@ const config: Config = {
     coverageDirectory: 'coverage',
     coverageProvider: 'v8',
     preset: '@shelf/jest-mongodb',
+    modulePathIgnorePatterns: ['<rootDir>/dist/'],
 };
 
 export default config;
