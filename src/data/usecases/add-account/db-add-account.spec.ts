@@ -28,7 +28,7 @@ const makeAddAccountRepository = (): AddAccountRepository => {
 
 const makeEncrypter = () => {
     class EncrypterStub implements Encrypter {
-        async encrypt(value: string): Promise<string> {
+        async encrypt(): Promise<string> {
             return 'hashed_password';
         }
     }

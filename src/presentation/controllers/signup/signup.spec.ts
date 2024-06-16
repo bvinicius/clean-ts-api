@@ -3,17 +3,12 @@ import {
     MissingParamError,
     ServerError,
 } from '../../errors';
-import {
-    EmailValidator,
-    AccountModel,
-    AddAccount,
-    AddAccountModel,
-} from './signup-protocols';
+import { EmailValidator, AccountModel, AddAccount } from './signup-protocols';
 import { SignUpController } from './signup';
 
 const makeEmailValidator = (): EmailValidator => {
     class EmailValidatorStub implements EmailValidator {
-        isValid(email: string): boolean {
+        isValid(): boolean {
             return true;
         }
     }
@@ -21,7 +16,7 @@ const makeEmailValidator = (): EmailValidator => {
 };
 const makeAddAccount = (): AddAccount => {
     class AddAccountStub implements AddAccount {
-        async add(account: AddAccountModel): Promise<AccountModel> {
+        async add(): Promise<AccountModel> {
             const fakeAccount = {
                 id: 'valid_id',
                 name: 'valid_name',
