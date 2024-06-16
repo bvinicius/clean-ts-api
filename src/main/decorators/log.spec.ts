@@ -5,7 +5,7 @@ interface SutTypes {
     sut: LogControllerDecorator;
     controllerStub: Controller;
 }
-const makeSut = (): SutTypes => {
+const makeController = (): Controller => {
     class ControllerStub implements Controller {
         async handle(): Promise<HttpResponse> {
             return {
@@ -19,8 +19,10 @@ const makeSut = (): SutTypes => {
             };
         }
     }
-
-    const controllerStub = new ControllerStub();
+    return new ControllerStub();
+};
+const makeSut = (): SutTypes => {
+    const controllerStub = makeController();
     const sut = new LogControllerDecorator(controllerStub);
     return { sut, controllerStub };
 };
@@ -38,7 +40,7 @@ describe('LogControllerDecorator', () => {
         expect(handleSpy).toHaveBeenCalledWith(httpRequest);
     });
 
-    test('Should return same as controller handle', async () => {
+    test('Should return same result of the controller', async () => {
         const { sut } = makeSut();
         const httpRequest = {
             body: {
