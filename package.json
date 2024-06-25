@@ -4,12 +4,16 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "sucrase-node src/main/server.ts",
         "lint": "eslint --ext .ts .",
         "lint:staged": "lint-staged",
-        "test": "jest --passWithNoTests --watch",
-        "test:staged": "jest --passWithNoTests",
-        "prepare": "husky"
+        "prepare": "husky",
+        "start": "sucrase-node src/main/server.ts",
+        "test": "jest --passWithNoTests --runInBand --no-cache",
+        "test:unit": "npm test -- --watch -c jest-unit-config.ts",
+        "test:integration": "npm test -- --watch -c jest-integration-config.ts",
+        "test:staged": "npm test -- --findRelatedTests .",
+        "test:ci": "npm test -- --coverage",
+        "test:coveralls": "npm run test:ci && coveralls < coverage/lcov.info"
     },
     "keywords": [],
     "author": "",
@@ -23,6 +27,7 @@
         "@types/supertest": "^6.0.2",
         "@types/validator": "^13.11.10",
         "@typescript-eslint/eslint-plugin": "^7.13.0",
+        "coveralls": "^3.1.1",
         "eslint": "^8.53.0",
         "eslint-config-standard": "^17.1.0",
         "eslint-plugin-import": "^2.29.1",
