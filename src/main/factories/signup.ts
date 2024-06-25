@@ -16,7 +16,7 @@ export const makeSignUpController = (): Controller => {
     const emailValidator = new EmailValidatorAdapter();
     const signUpController = new SignUpController(emailValidator, dbAddAccount);
     return new LogControllerDecorator(signUpController, {
-        log: async (stack: string) => {
+        logError: async (stack: string) => {
             console.log(stack);
         },
     });
